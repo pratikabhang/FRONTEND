@@ -1,0 +1,28 @@
+plugins = []
+headers = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "E:\\PROJECTS\\CREDBUD--The-Student-Platform\\credbud-frontend\\build"
+publishOrigin = "ui"
+commandOrigin = "ui"
+base = "E:\\PROJECTS\\CREDBUD--The-Student-Platform\\credbud-frontend"
+command = "npm run build"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
