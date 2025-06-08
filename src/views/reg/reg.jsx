@@ -17,7 +17,7 @@ import {
   TabPanels,
   Tabs,
   Text,
-  useColorModeValue
+  useColorModeValue,
 } from "@chakra-ui/react";
 // Custom components
 import React, { useRef, useState } from "react";
@@ -29,22 +29,21 @@ import { MdModeEdit } from "react-icons/md";
 function Wizard() {
   const [processing, setProcessing] = useState(false);
   const [serverHash, setServerHash] = useState(null);
-  const handleChange =async (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
-    if(name=='code' && value.length>3){
-      try{
-        setProcessing(true)
-        const serverHash= await axios.post('https://localhost:1234/api/v1/token/verify',{"code":(value)})
-        setServerHash(serverHash)
-        setProcessing(false)
+    if (name == "code" && value.length > 3) {
+      try {
+        setProcessing(true);
+        const serverHash = await axios.post(
+          "https://credbudbackend.onrender.com/token/verify",
+          { code: value }
+        );
+        setServerHash(serverHash);
+        setProcessing(false);
+      } catch (error) {
+        console.log("ERROR");
+        setProcessing(false);
       }
-      
-      catch(error){
-        console.log("ERROR")
-        setProcessing(false)
-      }
-      
-      
     }
     setFormData({ ...formData, [name]: value });
   };
@@ -54,13 +53,13 @@ function Wizard() {
   const [activeBullets, setActiveBullets] = useState({
     about: true,
     account: false,
-    address: false
+    address: false,
   });
 
   const [checkboxes, setCheckboxes] = useState({
     design: false,
     code: false,
-    develop: false
+    develop: false,
   });
 
   const aboutTab = useRef();
@@ -84,9 +83,7 @@ function Wizard() {
           fontSize={{ sm: "2xl", md: "3xl", lg: "4xl" }}
           fontWeight="bold"
           mb="8px"
-        >
-           
-        </Text>
+        ></Text>
         <Text
           color="gray.400"
           fontWeight="normal"
@@ -110,7 +107,7 @@ function Wizard() {
               setActiveBullets({
                 about: true,
                 account: false,
-                address: false
+                address: false,
               })
             }
           >
@@ -129,7 +126,7 @@ function Wizard() {
                 position: "absolute",
                 bottom: activeBullets.about ? "40px" : "38px",
                 zIndex: -1,
-                transition: "all .3s ease"
+                transition: "all .3s ease",
               }}
             >
               <Icon
@@ -157,7 +154,7 @@ function Wizard() {
               setActiveBullets({
                 about: true,
                 account: true,
-                address: false
+                address: false,
               })
             }
           >
@@ -176,7 +173,7 @@ function Wizard() {
                 position: "absolute",
                 bottom: activeBullets.account ? "40px" : "38px",
                 zIndex: -1,
-                transition: "all .3s ease"
+                transition: "all .3s ease",
               }}
             >
               <Icon
@@ -206,7 +203,7 @@ function Wizard() {
               setActiveBullets({
                 about: true,
                 account: true,
-                address: true
+                address: true,
               })
             }
           >
@@ -225,7 +222,7 @@ function Wizard() {
                 position: "absolute",
                 bottom: activeBullets.address ? "40px" : "38px",
                 zIndex: -1,
-                transition: "all .3s ease"
+                transition: "all .3s ease",
               }}
             >
               <Icon
@@ -404,7 +401,7 @@ function Wizard() {
                               setCheckboxes((prevCheckboxes) => {
                                 return {
                                   ...prevCheckboxes,
-                                  design: !prevCheckboxes.design
+                                  design: !prevCheckboxes.design,
                                 };
                               })
                             }
@@ -440,7 +437,7 @@ function Wizard() {
                               setCheckboxes((prevCheckboxes) => {
                                 return {
                                   ...prevCheckboxes,
-                                  code: !prevCheckboxes.code
+                                  code: !prevCheckboxes.code,
                                 };
                               })
                             }
@@ -476,7 +473,7 @@ function Wizard() {
                               setCheckboxes((prevCheckboxes) => {
                                 return {
                                   ...prevCheckboxes,
-                                  develop: !prevCheckboxes.develop
+                                  develop: !prevCheckboxes.develop,
                                 };
                               })
                             }

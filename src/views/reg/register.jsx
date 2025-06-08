@@ -52,7 +52,7 @@ import { useUserAuth } from "contexts/UserAuthContext";
 
 function Activate() {
   // Chakra color mode
-  const {sendResetLink}= useUserAuth();
+  const { sendResetLink } = useUserAuth();
   const textColor = useColorModeValue("navy.700", "white");
   const textColorSecondary = "gray.400";
   const textColorDetails = useColorModeValue("navy.700", "secondaryGray.600");
@@ -63,23 +63,22 @@ function Activate() {
   const googleHover = useColorModeValue(
     { bg: "gray.200" },
     { bg: "whiteAlpha.300" }
-    );
-    const googleActive = useColorModeValue(
-      { bg: "secondaryGray.300" },
-      { bg: "whiteAlpha.200" }
-      );
-      const [show, setShow] = React.useState(false);
-      
-      
-      const handleClick = () => setShow(!show);
-      
-      const [email,setEmail]=useState('');
-      
-      const submitForm =async(e)=>{
-        e.preventDefault;
-        sendResetLink(email)
-        // const request = await axios.post('https://localhost:1234/api/v1/user/activate',{"email":email})
-  }
+  );
+  const googleActive = useColorModeValue(
+    { bg: "secondaryGray.300" },
+    { bg: "whiteAlpha.200" }
+  );
+  const [show, setShow] = React.useState(false);
+
+  const handleClick = () => setShow(!show);
+
+  const [email, setEmail] = useState("");
+
+  const submitForm = async (e) => {
+    e.preventDefault;
+    sendResetLink(email);
+    // const request = await axios.post('https://localhost:1234/api/v1/user/activate',{"email":email})
+  };
   return (
     <DefaultAuth illustrationBackground={illustration} image={illustration}>
       <Flex
