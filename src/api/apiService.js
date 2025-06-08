@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 const api = axios.create({
-  baseURL: 'https://credbudbackend.onrender.com/',
+  baseURL: 'https://credbudbackend.onrender.com/api/v1',
 });
 
 api.interceptors.request.use((config) => {
